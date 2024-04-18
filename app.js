@@ -11,12 +11,12 @@ const app = express();              //Instantiate an express app, the main work 
 const PORT = process.env.PORT;   
 app.use(express.json());          
 // Routes will be written here 
-app.use('/', routes);  
+app.use('/admin', routes);  
 //Idiomatic expression in express to route and respond to a client request
-// app.get('/', (req, res) => {                            //get requests to the root ("/") will route here
-//     res.sendFile('index.html', {root: __dirname});      //server responds by sending the index.html file to the client's browser
-//                                                         //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
-// });
+app.get('/', (req, res) => {                            //get requests to the root ("/") will route here
+    res.sendFile('index.html', {root: __dirname});      //server responds by sending the index.html file to the client's browser
+                                                        //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
+});
 
 User.sync();
 
