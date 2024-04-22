@@ -1,9 +1,11 @@
 const express = require('express'); //Import the express dependency
 require('dotenv/config'); 
+const db = require("./models/db");
 const routes = require('./routes/route.js'); 
 
 
 const User = require('./models/user');
+
 const { FORCE } = require('sequelize/lib/index-hints');
 
 
@@ -18,7 +20,9 @@ app.get('/', (req, res) => {                            //get requests to the ro
                                                         //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
 });
 
-User.sync();
+db.sync().then(() => {
+    console.log("db synced");
+  });
 
 app.listen(PORT, (error) =>{ 
     if(!error) 
