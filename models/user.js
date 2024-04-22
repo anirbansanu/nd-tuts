@@ -6,14 +6,46 @@ class User extends Model {}
 
 User.init(
   {
-    // Model attributes are defined here
-    firstName: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName: {
+    email: {
       type: DataTypes.STRING,
-      // allowNull defaults to true
+      unique: true,
+      allowNull: false,
+    },
+    phone_number: {
+      type: DataTypes.STRING(24),
+      unique: true,
+      allowNull: true,
+      defaultValue: null,
+    },
+    phone_verified_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    email_verified_at: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    api_token: {
+      type: DataTypes.CHAR(60),
+      unique: true,
+      allowNull: true,
+      defaultValue: null,
+    },
+    device_token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    remember_token: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
