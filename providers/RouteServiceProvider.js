@@ -9,7 +9,7 @@ class RouteServiceProvider {
     }
 
     registerRoutes() {
-        const routesPath = path.join(__dirname, 'routes');
+        const routesPath = path.join(__dirname, '../routes');
         console.info("synchronizing routes...");
         fs.readdirSync(routesPath).forEach((file) => {
             if (file.endsWith('.js')) {

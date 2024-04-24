@@ -24,7 +24,7 @@ class AppServiceProvider {
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
         // Serve static files from the 'public' directory
-        this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use(express.static(path.join(__dirname, '../public')));
     }
 
     registerErrorHandlers() {
@@ -35,7 +35,7 @@ class AppServiceProvider {
             res.status(500).send('Something broke!');
         });
         this.app.use((req, res, next) => {
-            res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+            res.status(404).sendFile(path.join(__dirname, '../public', '404.html'));
         });
     }
 
