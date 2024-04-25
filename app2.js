@@ -13,5 +13,5 @@ appServiceProvider.registerApp();
 // Other app configurations and middleware...
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    console.log('\nServer is running on port 3000');
 });
