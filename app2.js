@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-const RouteServiceProvider = require('./providers/RouteServiceProvider');
 const AppServiceProvider = require('./providers/AppServiceProvider');
 
 // Initialize AppServiceProvider
