@@ -17,5 +17,5 @@ db.authenticate().then(() => {
 }).catch((error) => {
    console.error('Unable to connect to the database: ', error);
 });
-db.role = require("./role.model.js")(db, Sequelize, DataTypes);
+db.role = require("./role.js")(db, Sequelize, DataTypes);
 module.exports=db;
