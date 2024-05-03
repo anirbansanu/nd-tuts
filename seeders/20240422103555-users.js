@@ -7,7 +7,7 @@ module.exports = {
     const usersData = [];
 
     // Generate 1000 user objects with Faker
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 100; i++) {
       usersData.push({
         name: faker.name.findName(),
         email: faker.internet.email(),

@@ -2,6 +2,8 @@
 const BaseApiController = require('../../Controller');
 const { v4: uuidv4 } = require('uuid');
 const User = require('../../../models/user');
+const moment = require('moment');
+
 class UserController extends BaseApiController {
   constructor() {
     super(); // Call the constructor of the parent class (BaseApiController)
@@ -21,9 +23,14 @@ class UserController extends BaseApiController {
 
   // Example method using filterCollection
   async listUsers(req, res) {
-    const usersCollection = await User.findAll();
-    // this.filterCollection(req, usersCollection);
-    res.json(usersCollection);
+    try {
+      const users = await User.findAll(); // Assuming you're using Sequelize to fetch users
+      
+      res.render('users', { users }); // Pass the users array to the template
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).send('Internal Server Error');
+    }
   }
 
   // Example method using getOnlyArray

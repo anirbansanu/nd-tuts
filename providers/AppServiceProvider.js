@@ -20,6 +20,7 @@ class AppServiceProvider {
         
     }
     registerMiddleware() {
+        
         // Register global middleware here
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));

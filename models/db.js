@@ -1,6 +1,6 @@
 require('dotenv/config'); 
 const { Sequelize, DataTypes, Op } = require("sequelize");
-
+const fs = require('fs');
 const db = new Sequelize(
    process.env.DB_DATABASE, // Database name 
    process.env.DB_USERNAME,   // Username
@@ -9,6 +9,8 @@ const db = new Sequelize(
       host: process.env.DB_HOST, // Use IP address instead of 'localhost'
       dialect: process.env.DB_CONNECTION,
       port: process.env.DB_PORT, // Ensure the port is correct
+      ssl: true,
+      ca: fs.readFileSync('/home/ani/Documents/code drive/Node projects/ca.pem'),
    }
 );
 

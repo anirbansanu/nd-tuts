@@ -2,7 +2,9 @@ const { DataTypes,Model } = require('sequelize');
 const sequelize = require('./db');
 
 
-class User extends Model {}
+class User extends Model {
+  
+}
 
 User.init(
   {
@@ -52,6 +54,19 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+      
+      
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+        
+    }
   },
   {
     // Other model options go here
