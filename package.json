@@ -14,6 +14,7 @@
     "express": "^4.19.2",
     "faker": "^5.5.3",
     "hbs": "^4.2.0",
+    "moment": "^2.30.1",
     "mysql2": "^3.9.4",
     "node-cache": "^5.1.2",
     "performance-now": "^2.1.0",

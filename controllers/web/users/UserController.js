@@ -21,17 +21,33 @@ class UserController extends BaseApiController {
     this.sendError(res, error.message, 404);
   }
 
-  // Example method using filterCollection
-  async listUsers(req, res) {
+  // Example method for listing users with pagination using Sequelize
+  listUsers = async (req, res) => {
     try {
-      const users = await User.findAll(); // Assuming you're using Sequelize to fetch users
-      
-      res.render('users', { users }); // Pass the users array to the template
+      const page = req.query.page || 1; // Get the page parameter from the request query, default to page 1
+      const pageSize = 10; // Number of items per page
+
+      const { count, rows: users } = await User.findAndCountAll({
+        offset: (page - 1) * pageSize, // Calculate the offset based on the current page
+        limit: pageSize, // Limit the number of results per page
+        
+      });
+
+      const totalPages = Math.ceil(count / pageSize); // Calculate total pages
+      const pages = []; // Array to hold pagination data
+
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push({ page: i, active: i === page });
+      }
+      // this.sendResponse(res, totalPages, 'User retrieved successfully');
+      res.render('users', { users, totalPages,pages, currentPage: page });
+
     } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).send('Internal Server Error');
+      console.error('Error fetching users:', error);
+      res.status(500).send('Internal Server Error');
     }
   }
+
 
   // Example method using getOnlyArray
   getUsersWithFields(req, res) {

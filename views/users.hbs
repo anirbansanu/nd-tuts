@@ -14,6 +14,32 @@
             padding: 8px;
             text-align: left;
         }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #0d6efd;
+            border: 1px solid #ccc;
+            border-radius: 10%;
+            color: rgb(228, 228, 228);
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.1s ease; /* Add transition for background-color and color */
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+            /* Add hover effect for all pagination links */
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -42,5 +68,16 @@
             {{/each}}
         </tbody>
     </table>
+    <div class="pagination">
+        {{#if totalPages}}
+            {{#each pages}}
+                {{#if active}}
+                    <span>{{this.page}}</span>
+                {{else}}
+                    <a href="?page={{this.page}}">{{this.page}}</a>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    </div>
 </body>
 </html>
