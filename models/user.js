@@ -1,6 +1,6 @@
 const { DataTypes,Model } = require('sequelize');
 const sequelize = require('./db');
-
+const moment = require('moment');
 
 class User extends Model {
   
@@ -58,14 +58,18 @@ User.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-      
+      get() {
+        return moment(this.getDataValue('createdAt')).fromNow();
+      },
       
     },
     updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
-        
+        get() {
+          return moment(this.getDataValue('createdAt')).fromNow();
+        },
     }
   },
   {
